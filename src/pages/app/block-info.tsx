@@ -1,5 +1,5 @@
 import { Block } from '@core';
-import { Box } from '@material-ui/core';
+import { CircularProgress, Box } from '@material-ui/core';
 import React, { FC, ReactElement } from 'react';
 import { TxCardList } from './tx-card-list';
 
@@ -29,6 +29,13 @@ export const BlockInfo: FC<IProps> = ({
           height='2.5em'
           lineHeight='2.5em'
           bgcolor='rgb(200, 200, 200)'>
+            <Box
+              padding="0.3em 0.8em"
+              position='absolute'
+              top='0px'
+              left='0px'>
+                <CircularProgress size="1.4em"/>
+            </Box>
             <Box>
               block height: {height}
             </Box>
@@ -36,12 +43,12 @@ export const BlockInfo: FC<IProps> = ({
               position: 'absolute',
               top: '0px',
               right: '0px',
-                color: 'green',
+              color: 'green',
               fontWeight: 'bolder',
-              paddingRight: '0.5em'
+              paddingRight: '0.8em'
             }}>12</span>
         </Box>
-        <Box>
+        <Box height="2em" lineHeight="2em">
           relayer: {from}
         </Box>
       </Box>

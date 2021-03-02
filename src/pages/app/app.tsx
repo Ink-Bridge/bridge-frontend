@@ -6,9 +6,12 @@ import { Box } from '@material-ui/core';
 import { TxList } from './tx-list';
 
 function App() {
-  const { list: blockList } = useBlockList(0);
+  const { list: blockList } = useBlockList();
   const txList = useMemo(
-    () => blockList.reduce((list: Tx[], current) => list.concat(current.txs), []),
+    () => {
+      // console.log('list', blockList)
+      return blockList.reduce((list: Tx[], current) => list.concat(current.txs), []);
+    },
     [blockList],
   );
 
@@ -16,9 +19,10 @@ function App() {
     <div className="App">
       <Box padding="20px" display="flex" justifyContent="left">
         <Box width="500px">
+          <h2> Checked Transactions </h2>
           <TxList list={txList}></TxList>
         </Box>
-        <Box marginLeft="330px">
+        <Box marginLeft="350px">
           { blockList.map((block, index) => <BlockInfo left={!!(index % 2)} txs={block.txs} from={ block.from } height={block.height} isTail={ !index }></BlockInfo>) }
         </Box>
       </Box>

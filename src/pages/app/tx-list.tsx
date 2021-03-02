@@ -1,6 +1,6 @@
 import { Paper, Table, TableBody, TableRow, TableContainer, TableHead, TableCell } from '@material-ui/core';
 import React, { FC, ReactElement } from 'react';
-import { Tx } from '@core';
+import { Tx, TxStatus } from '@core';
 
 export const TxList: FC<{list: Tx[]}> = ({ list }): ReactElement => {
 
@@ -9,9 +9,9 @@ export const TxList: FC<{list: Tx[]}> = ({ list }): ReactElement => {
       <Table aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Transaction Hash</TableCell>
+            <TableCell>Tx Hash</TableCell>
             <TableCell>Block Number</TableCell>
-            <TableCell>From</TableCell>
+            <TableCell>Requirer</TableCell>
             <TableCell>Status</TableCell>
           </TableRow>
         </TableHead>
@@ -28,7 +28,11 @@ export const TxList: FC<{list: Tx[]}> = ({ list }): ReactElement => {
                 {row.requirer}
               </TableCell>
               <TableCell component="th" scope="row">
-                {row.status}
+                {
+                  row.status === TxStatus.success ?
+                    <span style={{ color:"green" }}>success</span>
+                  : <span style={{ color:"red" }}>fail</span>
+                }
               </TableCell>
             </TableRow>
           ))}

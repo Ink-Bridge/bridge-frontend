@@ -15,7 +15,7 @@ export const TxCardList: FC<{txs: Tx[], left: boolean}> = ({ txs, left }): React
         width: '30px',
       }}></div>
       <TxCard blockNumber={txs[0].blockNumber} status={txs[0].status} requirer={txs[0].requirer} hash={txs[0].hash}></TxCard>
-      <Box height="2em" lineHeight="2em" textAlign="center">more</Box>
+      <Box borderTop="1px solid gray" height="2em" lineHeight="2em" textAlign="center">more</Box>
     </Box>
     :
     <Box></Box>
