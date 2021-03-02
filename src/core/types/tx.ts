@@ -7,4 +7,5 @@ export interface Tx {
   hash: string;
   requirer: string;
   status: TxStatus;
+  blockNumber: number;
 }
