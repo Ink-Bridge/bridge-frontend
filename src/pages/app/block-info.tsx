@@ -1,5 +1,5 @@
 import { Block } from '@core';
-import { CircularProgress, Box } from '@material-ui/core';
+import { CircularProgress, Box, SvgIcon } from '@material-ui/core';
 import React, { FC, ReactElement } from 'react';
 import { TxCardList } from './tx-card-list';
 
@@ -33,16 +33,20 @@ export const BlockInfo: FC<IProps> = ({
           height='2.5em'
           lineHeight='2.5em'
           bgcolor='rgb(200, 200, 200)'>
-            {
-              !checked && 
-                <Box
-                  padding="0.3em 0.8em"
-                  position='absolute'
-                  top='0px'
-                  left='0px'>
-                    <CircularProgress size="1.4em"/>
-                </Box>
-            }
+              <Box
+                padding="0.3em 0.8em"
+                position='absolute'
+                top='0px'
+                left='0px'>
+                  {
+                    checked ?
+                      <SvgIcon style={{ color: 'green' }}>
+                        <path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
+                      </SvgIcon>
+                      :
+                      <CircularProgress size="1.4em"/>
+                  }
+              </Box>
             <Box>
               block height: {height}
             </Box>
@@ -50,8 +54,8 @@ export const BlockInfo: FC<IProps> = ({
               position: 'absolute',
               top: '0px',
               right: '0px',
-              color: 'green',
-              fontWeight: 'bolder',
+              color: checked ? 'green' : 'black',
+              fontWeight: 'normal',
               paddingRight: '0.8em'
             }}>12</span>
         </Box>

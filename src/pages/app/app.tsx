@@ -11,17 +11,15 @@ function App() {
   const { checkedHeight } = useLastCheckedHeight();
 
   const txList = useMemo(
-    () => {
-      // console.log('list', blockList)
-      return originBlockList.filter(b => b.height <= checkedHeight).reduce((list: Tx[], current) => list.concat(current.txs), []);
-    },
+    () => originBlockList.filter(b => b.height <= checkedHeight)
+      .reduce((list: Tx[], current) => list.concat(current.txs), []),
     [originBlockList, checkedHeight],
   );
 
   return (
     <div className="App">
       <Box padding="20px" display="flex" justifyContent="left">
-        <Box width="500px">
+        <Box width="600px">
           checked height: {checkedHeight}
           <h2> Checked Transactions </h2>
           <TxList list={txList}></TxList>
