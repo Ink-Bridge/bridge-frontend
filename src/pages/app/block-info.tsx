@@ -6,6 +6,7 @@ import { TxCardList } from './tx-card-list';
 interface IProps extends Block{
   isTail?: boolean;
   left: boolean;
+  checked?: boolean;
 }
 
 export const BlockInfo: FC<IProps> = ({
@@ -14,6 +15,7 @@ export const BlockInfo: FC<IProps> = ({
   from,
   txs,
   left,
+  checked = false,
 }): ReactElement => {
   return (
     <Box width="300px">
@@ -22,20 +24,25 @@ export const BlockInfo: FC<IProps> = ({
         </Box>
       }
       <Box position="relative" height="80px" textAlign="center" border="1px solid rgb(238, 238, 238)" bgcolor="rgb(248, 248, 248)">
-        <TxCardList left={left} txs={txs}></TxCardList>
+        {
+          checked && <TxCardList left={left} txs={txs}></TxCardList>
+        }
         <Box
           position="relative"
           fontWeight='500'
           height='2.5em'
           lineHeight='2.5em'
           bgcolor='rgb(200, 200, 200)'>
-            <Box
-              padding="0.3em 0.8em"
-              position='absolute'
-              top='0px'
-              left='0px'>
-                <CircularProgress size="1.4em"/>
-            </Box>
+            {
+              !checked && 
+                <Box
+                  padding="0.3em 0.8em"
+                  position='absolute'
+                  top='0px'
+                  left='0px'>
+                    <CircularProgress size="1.4em"/>
+                </Box>
+            }
             <Box>
               block height: {height}
             </Box>
