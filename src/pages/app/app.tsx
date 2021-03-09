@@ -32,7 +32,7 @@ function App() {
                   checked={block.height <= checkedHeight}
                   left={!!(index % 2)}
                   txs={block.txs}
-                  from={ block.from }
+                  relayer={ block.relayer }
                   height={block.height}
                   isTail={ !index }>
                 </BlockInfo>

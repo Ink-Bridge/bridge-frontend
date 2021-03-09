@@ -12,7 +12,7 @@ interface IProps extends Block{
 export const BlockInfo: FC<IProps> = ({
   isTail = false,
   height,
-  from,
+  relayer: from,
   txs,
   left,
   checked = false,

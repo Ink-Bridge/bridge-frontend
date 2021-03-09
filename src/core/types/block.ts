@@ -1,7 +1,8 @@
 import { Tx } from './tx';
 
 export interface Block {
+  hash: string;
   height: number;
-  from: string;
+  relayer: string;
   txs: Tx[];
 }

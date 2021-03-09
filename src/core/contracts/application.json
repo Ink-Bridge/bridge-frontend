@@ -1,0 +1,321 @@
+{
+  "metadataVersion": "0.1.0",
+  "source": {
+    "hash": "0xb89d35b1e81f9bec7e7b2b2236058cd6f4d754709db69f8e2531bfe23c79e238",
+    "language": "ink! 3.0.0-rc3",
+    "compiler": "rustc 1.52.0-nightly"
+  },
+  "contract": {
+    "name": "bridge-example",
+    "version": "0.1.0",
+    "authors": [
+      "[your_name] <[your_email]>"
+    ]
+  },
+  "spec": {
+    "constructors": [
+      {
+        "args": [
+          {
+            "name": "btc_bridge",
+            "type": {
+              "displayName": [
+                "AccountId"
+              ],
+              "type": 1
+            }
+          }
+        ],
+        "docs": [],
+        "name": [
+          "new"
+        ],
+        "selector": "0x9bae9d5e"
+      }
+    ],
+    "docs": [],
+    "events": [],
+    "messages": [
+      {
+        "args": [],
+        "docs": [],
+        "mutates": false,
+        "name": [
+          "latest_block_list"
+        ],
+        "payable": false,
+        "returnType": {
+          "displayName": [
+            "Vec"
+          ],
+          "type": 9
+        },
+        "selector": "0xc83d907f"
+      },
+      {
+        "args": [
+          {
+            "name": "proof",
+            "type": {
+              "displayName": [
+                "PartialMerkleTree"
+              ],
+              "type": 11
+            }
+          },
+          {
+            "name": "tx_hash",
+            "type": {
+              "displayName": [
+                "Hash"
+              ],
+              "type": 6
+            }
+          },
+          {
+            "name": "block_hash",
+            "type": {
+              "displayName": [
+                "Hash"
+              ],
+              "type": 6
+            }
+          }
+        ],
+        "docs": [],
+        "mutates": true,
+        "name": [
+          "validate_transaction"
+        ],
+        "payable": false,
+        "returnType": null,
+        "selector": "0x0988d367"
+      },
+      {
+        "args": [],
+        "docs": [],
+        "mutates": false,
+        "name": [
+          "validate_transaction_list"
+        ],
+        "payable": false,
+        "returnType": {
+          "displayName": [
+            "Vec"
+          ],
+          "type": 4
+        },
+        "selector": "0x2b4153b3"
+      }
+    ]
+  },
+  "storage": {
+    "struct": {
+      "fields": [
+        {
+          "layout": {
+            "struct": {
+              "fields": [
+                {
+                  "layout": {
+                    "cell": {
+                      "key": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                      "ty": 1
+                    }
+                  },
+                  "name": "account_id"
+                }
+              ]
+            }
+          },
+          "name": "bridge"
+        },
+        {
+          "layout": {
+            "cell": {
+              "key": "0x0100000000000000000000000000000000000000000000000000000000000000",
+              "ty": 4
+            }
+          },
+          "name": "validate_lists"
+        }
+      ]
+    }
+  },
+  "types": [
+    {
+      "def": {
+        "composite": {
+          "fields": [
+            {
+              "type": 2,
+              "typeName": "[u8; 32]"
+            }
+          ]
+        }
+      },
+      "path": [
+        "ink_env",
+        "types",
+        "AccountId"
+      ]
+    },
+    {
+      "def": {
+        "array": {
+          "len": 32,
+          "type": 3
+        }
+      }
+    },
+    {
+      "def": {
+        "primitive": "u8"
+      }
+    },
+    {
+      "def": {
+        "sequence": {
+          "type": 5
+        }
+      }
+    },
+    {
+      "def": {
+        "composite": {
+          "fields": [
+            {
+              "name": "tx_hash",
+              "type": 6,
+              "typeName": "Hash"
+            },
+            {
+              "name": "height",
+              "type": 7,
+              "typeName": "u32"
+            },
+            {
+              "name": "requester",
+              "type": 1,
+              "typeName": "AccountId"
+            },
+            {
+              "name": "status",
+              "type": 8,
+              "typeName": "bool"
+            }
+          ]
+        }
+      },
+      "path": [
+        "bridge_example",
+        "inkbridge",
+        "CheckedTansaction"
+      ]
+    },
+    {
+      "def": {
+        "composite": {
+          "fields": [
+            {
+              "type": 2,
+              "typeName": "[u8; 32]"
+            }
+          ]
+        }
+      },
+      "path": [
+        "ink_env",
+        "types",
+        "Hash"
+      ]
+    },
+    {
+      "def": {
+        "primitive": "u32"
+      }
+    },
+    {
+      "def": {
+        "primitive": "bool"
+      }
+    },
+    {
+      "def": {
+        "sequence": {
+          "type": 10
+        }
+      }
+    },
+    {
+      "def": {
+        "composite": {
+          "fields": [
+            {
+              "name": "relayer",
+              "type": 1,
+              "typeName": "AccountId"
+            },
+            {
+              "name": "height",
+              "type": 7,
+              "typeName": "u32"
+            },
+            {
+              "name": "hash",
+              "type": 6,
+              "typeName": "Hash"
+            }
+          ]
+        }
+      },
+      "path": [
+        "bridge_example",
+        "inkbridge",
+        "RelayBlock"
+      ]
+    },
+    {
+      "def": {
+        "composite": {
+          "fields": [
+            {
+              "name": "tx_count",
+              "type": 7,
+              "typeName": "u32"
+            },
+            {
+              "name": "hashes",
+              "type": 12,
+              "typeName": "Vec<Hash>"
+            },
+            {
+              "name": "bits",
+              "type": 13,
+              "typeName": "Vec<bool>"
+            }
+          ]
+        }
+      },
+      "path": [
+        "patra_btc",
+        "merkle",
+        "PartialMerkleTree"
+      ]
+    },
+    {
+      "def": {
+        "sequence": {
+          "type": 6
+        }
+      }
+    },
+    {
+      "def": {
+        "sequence": {
+          "type": 8
+        }
+      }
+    }
+  ]
+}
