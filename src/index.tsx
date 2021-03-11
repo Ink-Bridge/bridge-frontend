@@ -1,12 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { AccountProvider } from './core/context/account';
+import { ApiProvider } from './core/context/api';
 import './index.css';
 import App from './pages/app/app';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ApiProvider>
+      <AccountProvider>
+        <App />
+      </AccountProvider>
+    </ApiProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

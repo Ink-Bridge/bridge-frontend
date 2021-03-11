@@ -1,17 +1,13 @@
-import { ApiPromise, WsProvider } from '@polkadot/api';
 import { Abi, ContractPromise } from '@polkadot/api-contract';
-import { useCallback, useState } from 'react';
-
-const wsProvider = new WsProvider('wss://rpc.polkadot.io');
+import { useCallback } from 'react';
+import { useApi } from './useApi';
 
 export const useContractFactory = () => {
-  const [ api, setAPI ] = useState<ApiPromise>();
-
-  ApiPromise.create({ provider: wsProvider }).then(api => setAPI(api));
+  const { api } = useApi();
 
   return useCallback(
     (address: string, abi: any) => {
-      if (!address || !api) {
+      if (!address) {
         throw new Error('Unexpected');
       }
 

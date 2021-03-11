@@ -1,12 +1,12 @@
 {
   "metadataVersion": "0.1.0",
   "source": {
-    "hash": "0xf97f1f48f9ca3319b06cf5f7decf7ee1739cdbd8a3ea6783554b57bdcd1cc55a",
+    "hash": "0x70a68c5d15299dc83892c708598d8cf3a4cd08a6ad99eb33ccae9b1623a395ed",
     "language": "ink! 3.0.0-rc2",
     "compiler": "rustc 1.52.0-nightly"
   },
   "contract": {
-    "name": "patra-btc",
+    "name": "btc_bridge",
     "version": "0.1.0",
     "authors": [
       "[your_name] <[your_email]>"
@@ -1146,7 +1146,7 @@
         }
       },
       "path": [
-        "patra_btc",
+        "btc_bridge",
         "types",
         "BtcHeaderInfo"
       ]
@@ -1189,7 +1189,7 @@
         }
       },
       "path": [
-        "patra_btc",
+        "btc_bridge",
         "types",
         "BtcHeader"
       ]
@@ -1206,7 +1206,7 @@
         }
       },
       "path": [
-        "patra_btc",
+        "btc_bridge",
         "types",
         "compact",
         "Compact"
@@ -1334,8 +1334,8 @@
         }
       },
       "path": [
-        "patra_btc",
-        "patra_btc",
+        "btc_bridge",
+        "btc_bridge",
         "Error"
       ]
     },
@@ -1357,7 +1357,7 @@
         }
       },
       "path": [
-        "patra_btc",
+        "btc_bridge",
         "types",
         "BtcHeaderIndex"
       ]
@@ -1496,7 +1496,7 @@
         }
       },
       "path": [
-        "patra_btc",
+        "btc_bridge",
         "merkle",
         "PartialMerkleTree"
       ]

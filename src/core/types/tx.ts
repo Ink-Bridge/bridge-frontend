@@ -4,8 +4,8 @@ export enum TxStatus {
 };
 
 export interface Tx {
-  hash: string;
-  requirer: string;
+  tx_hash: string;
+  height: number;
   status: TxStatus;
-  blockNumber: number;
+  requester: string;
 }

@@ -1,2 +1,2 @@
 # bridge-frontend
-PatraBridge frontend
+InkBridge frontend

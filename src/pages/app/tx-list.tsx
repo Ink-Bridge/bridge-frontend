@@ -1,6 +1,6 @@
 import { Paper, Table, TableBody, TableRow, TableContainer, TableHead, TableCell } from '@material-ui/core';
 import React, { FC, ReactElement } from 'react';
-import { Tx, TxStatus } from '@core';
+import { Tx, TxStatus } from '../../core';
 
 export const TxList: FC<{list: Tx[]}> = ({ list }): ReactElement => {
 
@@ -17,15 +17,15 @@ export const TxList: FC<{list: Tx[]}> = ({ list }): ReactElement => {
         </TableHead>
         <TableBody>
           {list.map((row) => (
-            <TableRow key={row.hash}>
+            <TableRow key={row.tx_hash}>
               <TableCell component="th" scope="row">
-                {row.hash}
+                {row.tx_hash}
               </TableCell>
               <TableCell component="th" scope="row">
-                {row.blockNumber}
+                {row.height}
               </TableCell>
               <TableCell component="th" scope="row">
-                {row.requirer}
+                {row.requester}
               </TableCell>
               <TableCell component="th" scope="row">
                 {

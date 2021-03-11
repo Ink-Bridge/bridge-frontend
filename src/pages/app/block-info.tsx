@@ -1,20 +1,17 @@
-import { Block } from '@core';
 import { CircularProgress, Box, SvgIcon } from '@material-ui/core';
 import React, { FC, ReactElement } from 'react';
+import { Block } from '../../core';
 import { TxCardList } from './tx-card-list';
 
-interface IProps extends Block{
+interface IProps {
+  blockData: Block;
   isTail?: boolean;
-  left: boolean;
   checked?: boolean;
 }
 
 export const BlockInfo: FC<IProps> = ({
+  blockData,
   isTail = false,
-  height,
-  relayer: from,
-  txs,
-  left,
   checked = false,
 }): ReactElement => {
   return (
@@ -25,7 +22,7 @@ export const BlockInfo: FC<IProps> = ({
       }
       <Box position="relative" height="80px" textAlign="center" border="1px solid rgb(238, 238, 238)" bgcolor="rgb(248, 248, 248)">
         {
-          checked && <TxCardList left={left} txs={txs}></TxCardList>
+          // checked && <TxCardList left={left} txs={txs}></TxCardList>
         }
         <Box
           position="relative"
@@ -48,7 +45,7 @@ export const BlockInfo: FC<IProps> = ({
                   }
               </Box>
             <Box>
-              block height: {height}
+              {/* block height: {height} */}
             </Box>
             <span style={{
               position: 'absolute',
@@ -60,7 +57,7 @@ export const BlockInfo: FC<IProps> = ({
             }}>12</span>
         </Box>
         <Box height="2em" lineHeight="2em">
-          relayer: {from}
+          {/* relayer: {from} */}
         </Box>
       </Box>
     </Box>

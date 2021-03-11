@@ -1,7 +1,7 @@
 import { FC, ReactElement } from 'react';
 import { Box } from '@material-ui/core';
 import { TxCard } from './tx-card';
-import { Tx } from '@core';
+import { Tx } from '../../core';
 
 export const TxCardList: FC<{txs: Tx[], left: boolean}> = ({ txs, left }): ReactElement => {
   return (txs && txs.length) ?
@@ -14,7 +14,7 @@ export const TxCardList: FC<{txs: Tx[], left: boolean}> = ({ txs, left }): React
         left: left ? '264px' : '-36px',
         width: '30px',
       }}></div>
-      <TxCard blockNumber={txs[0].blockNumber} status={txs[0].status} requirer={txs[0].requirer} hash={txs[0].hash}></TxCard>
+      {/* <TxCard blockNumber={txs[0].blockNumber} status={txs[0].status} requirer={txs[0].requirer} hash={txs[0].hash}></TxCard> */}
       <Box borderTop="1px solid gray" height="2em" lineHeight="2em" textAlign="center">more</Box>
     </Box>
     :

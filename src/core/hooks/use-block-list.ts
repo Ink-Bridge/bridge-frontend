@@ -1,6 +1,6 @@
-import { Block } from '@core/types';
 import { useState, useEffect } from 'react';
 import { useContractQuery } from './useContractQuery';
+import { Block } from '../types';
 import { useAppContract } from './use-app-contract';
 
 export const useBlockList = (): { list: Block[], isLoading: boolean } => {
@@ -14,7 +14,8 @@ export const useBlockList = (): { list: Block[], isLoading: boolean } => {
     
     read()
       .then((_list: any) => {
-        setList(_list);
+        console.log('_list', _list)
+        setList(_list || []);
       })
       .catch(e => {
         console.log(e, 'total error');
@@ -23,7 +24,7 @@ export const useBlockList = (): { list: Block[], isLoading: boolean } => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, []);
+  }, [read]);
 
   return { list: list, isLoading };
 };

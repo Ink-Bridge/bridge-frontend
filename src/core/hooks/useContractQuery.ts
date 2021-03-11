@@ -1,5 +1,6 @@
 import { ContractPromise } from '@polkadot/api-contract';
 import { useCallback } from 'react';
+import { useAccount } from './useAccount';
 
 export type ContractQueryProps = {
   contract: ContractPromise;
@@ -22,7 +23,7 @@ export const contractQuery = async (
 };
 
 export const useContractQuery = ({ contract, method }: ContractQueryProps) => {
-  const currentAccount = '5C8R1N8L6jZJu9Cm4RzdASggyjfzCBJgxFMMq1PDHeraw7eJ';
+  const { currentAccount } = useAccount();
 
   const read = useCallback(
     async (...fields: any[]) => {
