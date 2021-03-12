@@ -50,7 +50,7 @@ export const BlockInfo: FC<IProps> = ({
           </Box>
           <Box height="5rem" lineHeight="5rem" padding="0rem 2.2rem" display="flex" justifyContent="space-between">
             <span style={{ fontWeight: 600 }}>nonce</span>
-            <span>{ 'meiyou' }</span>
+            <span>{ blockData.nonce }</span>
           </Box>
           <Box height="5rem" lineHeight="5rem" padding="0rem 2.2rem" display="flex" justifyContent="space-between">
             <span style={{ fontWeight: 600 }}>difficulty</span>

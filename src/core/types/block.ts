@@ -4,4 +4,5 @@ export interface Block {
   relayer: string;
   miner: string;
   difficulty: number;
+  nonce: number;
 }
