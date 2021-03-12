@@ -1,6 +1,6 @@
 import { ContractPromise } from '@polkadot/api-contract';
 import { useCallback } from 'react';
-import { useAccount } from './useAccount';
+import { useAccount } from './use-account';
 
 export type ContractQueryProps = {
   contract: ContractPromise;

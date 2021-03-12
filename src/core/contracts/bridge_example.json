@@ -1,7 +1,7 @@
 {
   "metadataVersion": "0.1.0",
   "source": {
-    "hash": "0x212cf2db8c04a4d340032c826bfb508de3ddb39855d2c79a82895d0fb31784dd",
+    "hash": "0x51f91f025a5eb6b8d513cd18de961b51835e79394875582e965982eaad8bfaa1",
     "language": "ink! 3.0.0-rc3",
     "compiler": "rustc 1.52.0-nightly"
   },
@@ -523,6 +523,11 @@
               "name": "difficulty",
               "type": 15,
               "typeName": "u64"
+            },
+            {
+              "name": "nonce",
+              "type": 7,
+              "typeName": "u32"
             },
             {
               "name": "height",

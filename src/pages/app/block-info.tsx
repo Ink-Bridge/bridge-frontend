@@ -3,21 +3,30 @@ import React, { FC, ReactElement } from 'react';
 import { Block, Tx } from '../../core';
 import { TxInfo } from './tx-info';
 import './block-info.css';
+import { Progress } from './progress';
 
 interface IProps {
   blockData: Block;
   txs: Tx[],
   checked?: boolean;
+  first?: boolean;
 }
 
 export const BlockInfo: FC<IProps> = ({
   blockData,
   txs,
   checked = false,
+  first = false,
 }): ReactElement => {
 
   return (
     <div className="block-info">
+      <Box height="4rem" bgcolor="rgb(239, 239, 239)" position="relative" left="-2.2rem">
+        {
+          checked && !first &&
+            <Progress width={292}></Progress>
+        }
+      </Box>
       <Box width="37rem" height="20rem" bgcolor="white" boxShadow='0px 0px 24px 0px rgba(0,0,0,0.08)'>
         <Box color="white" textAlign="left" height="5rem" lineHeight="5rem" paddingLeft="2.2rem" bgcolor="#E5AA64" position="relative">
           <span>

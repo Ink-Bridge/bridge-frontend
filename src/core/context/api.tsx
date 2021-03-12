@@ -13,7 +13,7 @@ export const ApiProvider = React.memo(function Api({ children }: Props): React.R
   const [ api, setApi ] = useState<ApiPromise>({} as ApiPromise);
   
   useEffect(() => {
-    const wsProvider = new WsProvider('wss://new.staging.jupiter.patract.cn');
+    const wsProvider = new WsProvider('wss://ws.jupiter-poa.patract.cn/');
     const apiPromise = new ApiPromise({
       provider: wsProvider,
     });

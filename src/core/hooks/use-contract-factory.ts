@@ -1,6 +1,6 @@
 import { Abi, ContractPromise } from '@polkadot/api-contract';
 import { useCallback } from 'react';
-import { useApi } from './useApi';
+import { useApi } from './use-api';
 
 export const useContractFactory = () => {
   const { api } = useApi();
