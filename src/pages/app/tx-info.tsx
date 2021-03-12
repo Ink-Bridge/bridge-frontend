@@ -7,7 +7,7 @@ import LinkSvg from '../../assets/link.svg';
 
 export const TxInfo: FC<{tx: Tx}> = ({ tx }): ReactElement => {
   return (
-    <Box marginBottom="1.8rem" bgcolor="#FFF7F7" borderRadius="1.5rem">
+    <div className="tx-info">
       <h3 style={{ textAlign: 'left', color: 'white', height: '3.5rem', lineHeight: '3.5rem', padding: '0rem 2.2rem', borderRadius: '1.5rem 1.5rem 0rem 0rem', background: tx.status ? '#20CB97' : '#E55151'}}>
         {
           tx.status ?
@@ -30,6 +30,6 @@ export const TxInfo: FC<{tx: Tx}> = ({ tx }): ReactElement => {
         <span style={{ fontWeight: 600 }}>Requirer:</span>
         <span>{ tx.requester.slice(0, 7) }</span>
       </div>
-    </Box>
+    </div>
   )
 };
