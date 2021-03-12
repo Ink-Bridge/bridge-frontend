@@ -23,9 +23,9 @@ export class Progress extends React.Component<IProps> {
     this.arr = (new Array(counts)).fill(true);
 
     this.timer = setInterval(() => {
-      let nextActive = this.state.active + 1;
-      if (nextActive >= counts) {
-        nextActive = 0;
+      let nextActive = this.state.active - 1;
+      if (nextActive < 0) {
+        nextActive = counts - 1;
       }
       this.setState({
         ...this.state,
