@@ -4,6 +4,7 @@ import { Block, Tx } from '../../core';
 import { TxInfo } from './tx-info';
 import './block-info.css';
 import { Progress } from './progress';
+import { getFixedAddress } from '../../core/util/address-format';
 
 interface IProps {
   blockData: Block;
@@ -31,7 +32,7 @@ export const BlockInfo: FC<IProps> = ({
         <Box color="white" textAlign="left" height="5rem" lineHeight="5rem" paddingLeft="2.2rem" bgcolor="#E5AA64" position="relative">
           <span>
             <span style={{ fontWeight: 700 }}>Relayer:&nbsp;&nbsp;</span>
-            { blockData.relayer.slice(0, 7) }
+            { getFixedAddress(blockData.relayer) }
           </span>
           <a href={`https://www.blockchain.com/btc/block/${blockData.hash.slice(2)}`} target="blank">
             <div className="block-number">
@@ -46,7 +47,7 @@ export const BlockInfo: FC<IProps> = ({
         <Box>
           <Box height="5rem" lineHeight="5rem" padding="0rem 2.2rem" display="flex" justifyContent="space-between">
             <span style={{ fontWeight: 600 }}>producer</span>
-            <span>{ blockData.miner.slice(0, 7) }</span>
+            <span>{ getFixedAddress(blockData.miner) }</span>
           </Box>
           <Box height="5rem" lineHeight="5rem" padding="0rem 2.2rem" display="flex" justifyContent="space-between">
             <span style={{ fontWeight: 600 }}>nonce</span>
