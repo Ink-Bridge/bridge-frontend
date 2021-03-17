@@ -9,6 +9,10 @@ import { getFixedAddress } from '../../core/util/address-format';
 interface IProps {
   blockData: Block;
   txs: Tx[],
+  style?: {
+    width: number;
+    opacity: number;
+  };
   checked?: boolean;
   first?: boolean;
 }
@@ -25,10 +29,10 @@ export const BlockInfo: FC<IProps> = ({
       <Box height="4rem" bgcolor="rgb(239, 239, 239)" position="relative" left="-2.2rem">
         {
           checked && !first &&
-            <Progress width={292}></Progress>
+            <Progress rightToLeft={true} width={292}></Progress>
         }
       </Box>
-      <Box width="37rem" height="20rem" bgcolor="white" boxShadow='0px 0px 24px 0px rgba(0,0,0,0.08)'>
+      <div className="block">
         <Box color="white" textAlign="left" height="5rem" lineHeight="5rem" paddingLeft="2.2rem" bgcolor="#E5AA64" position="relative">
           <span>
             <span style={{ fontWeight: 700 }}>Relayer:&nbsp;&nbsp;</span>
@@ -58,7 +62,7 @@ export const BlockInfo: FC<IProps> = ({
             <span>{ blockData.difficulty }</span>
           </Box>
         </Box>
-      </Box>
+      </div>
       {
         !!txs.length &&
           <Box width="37rem" marginTop="1rem" bgcolor="white" padding="1.8rem" boxShadow='0px 0px 24px 0px rgba(0,0,0,0.08)'>

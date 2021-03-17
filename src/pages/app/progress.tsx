@@ -2,6 +2,7 @@ import React from 'react';
 
 interface IProps {
   width: number;
+  rightToLeft?: boolean;
   delay?: number;
 }
 
@@ -16,20 +17,29 @@ export class Progress extends React.Component<IProps> {
 
   constructor(props: IProps) {
     super(props);
-    let { width, delay } = props;
+    let { width, delay, rightToLeft } = props;
     delay = delay || 100;
+    rightToLeft = !!rightToLeft;
     const counts = Math.floor(width / (this.brickWidth * 2));
     this.arr = (new Array(counts)).fill(true);
 
     this.timer = setInterval(() => {
-      let nextActive = this.state.active - 1;
-      if (nextActive < 0) {
-        nextActive = counts - 1;
+      let nextActive: number;
+      if (rightToLeft) {
+        nextActive = this.state.active - 1;
+        if (nextActive < 0) {
+          nextActive = counts - 1;
+        }
+      } else {
+        nextActive = this.state.active + 1;
+        if (nextActive >= counts) {
+          nextActive = 0;
+        }
       }
       this.setState({
         ...this.state,
         active: nextActive,
-      });   
+      });
     }, delay);
   }
 
