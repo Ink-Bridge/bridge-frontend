@@ -43,8 +43,7 @@ export const useCheckedHeightAndTxs = (): {
     readBlockList().then(blockList => {
       blockListRef.current = ((blockList as any) || []).reverse();
       setBlockList(blockListRef.current);
-    }
-    );
+    });
   }, [readConfirmedIndex, readTxs, readBlockList]);
 
   useEffect(() => {

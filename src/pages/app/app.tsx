@@ -14,7 +14,7 @@ const Main: FC = (): ReactElement => {
   const [ prevAvailable, setPrevAvailable ] = useState<boolean>(false);
   const [ nextAvailable, setNextAvailable ] = useState<boolean>(true);
   const [ pushing, setPushing ] = useState<boolean>(false);
-  const [ left, setLeft ] = useState<number>(0);
+  const [ right, setRight ] = useState<number>(0);
   const content = useRef<HTMLDivElement>(null);
   const container = useRef<HTMLDivElement>(null);
   const delay = 1000;
@@ -34,17 +34,18 @@ const Main: FC = (): ReactElement => {
     if (!nextAvailable || !content.current || !container.current) {
       return;
     }
-    let left = parseFloat(content.current?.style.left || '0');
+    //  0 ~ + content.current.clientWidth - container.current.clientWidth
+    let right = parseFloat(content.current?.style.right || '0');
     let min = container.current.clientWidth - content.current.clientWidth;
     min = min > 0 ? 0 : min;
-    if (left - 300 < min) {
-      left = min;
-      setNextAvailable(false);
+    if (right + 300 > 0) {
+      right = 0;
+      // setNextAvailable(false);
     } else {
-      left -= 300;
+      right += 300;
     }
-    console.log('min', min, 'left', left);
-    setLeft(left);
+    console.log('min', min, 'right', right);
+    setRight(right);
   };
 
   const handlePrev = () => {
@@ -53,14 +54,14 @@ const Main: FC = (): ReactElement => {
     }
     let min = container.current.clientWidth - content.current.clientWidth;
     min = min > 0 ? 0 : min;
-    let left = parseFloat(content.current?.style.left || '0');
-    if (left + 300 > 0) {
-      left = 0;
+    let right = parseFloat(content.current?.style.right || '0');
+    if (right - 300 < min) {
+      right = min;
     } else {
-      left += 300;
+      right -= 300;
     }
-    console.log('min', min, 'left', left);
-    setLeft(left);
+    console.log('min', min, 'right', right);
+    setRight(right);
   };
 
   const gotoRight = () => {
@@ -69,26 +70,30 @@ const Main: FC = (): ReactElement => {
     }
     let min = container.current.clientWidth - content.current.clientWidth;
     min = min > 0 ? 0 : min;
-    setLeft(min);
+    console.log('goto right', min);
+    setRight(0);
   };
 
   useMemo(() => {
     if (!content.current || !container.current) {
       return;
     }
+    // container.current.clientWidth - content.current.clientWidth = min
+    // min ~ 0
+    // rightmax  - leftmax
     let min = container.current.clientWidth - content.current.clientWidth;
-    if (min < 0 && left < 0) {
+    if (min < 0 && right > min) {
       setPrevAvailable(true);
     } else {
       setPrevAvailable(false);
     }
-    if (min < 0 && left > min) {
+    if (min < 0 && right < 0) {
       setNextAvailable(true);
     } else {
       setNextAvailable(false);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [left]);
+  }, [right]);
 
   useEffect(() => {
     if (!blockList || !blockList.length ) {
@@ -104,13 +109,11 @@ const Main: FC = (): ReactElement => {
 
   return (
     <div className="App" style={{ height: '100%', background: 'white' }}>
-      { checkedHeight } <br/>
-      { blockList.length }
       <Box textAlign='left' lineHeight='8rem' fontSize='4rem' marginLeft='4.2rem' height='8rem' color='#111' fontWeight='600' bgcolor='white'display="flex" flexDirection="column" justifyContent="center">
         <img src={LogoSvg} alt="" style={{ width: '18rem' }} />
       </Box>
       <div ref={container} style={{ width: "100%", overflow: "hidden", position: "absolute", top: "8rem", bottom: "10rem", background: 'rgb(239, 239, 239)' }}>
-        <div ref={content} style={{ height: "100%", padding: "4.8rem", position: "absolute", left, top: "0px" }}>
+        <div ref={content} style={{ height: "100%", padding: "4.8rem", position: "absolute", right: right, top: "0px" }}>
           <Box zIndex="2" bgcolor="rgba(0, 0, 0, 0)" position="relative" top="15px" display="inline-flex">
             { blockList.slice(0, blockList.length - 1).map((block, index) => <BlockInfo showProgress={!!index} checked={true} key={block.hash} blockData={block} txs={txs[block.height] || []}></BlockInfo>) }
             {
