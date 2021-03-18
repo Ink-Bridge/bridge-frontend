@@ -12,27 +12,31 @@ export class Progress extends React.Component<IProps> {
     active: 0,
   };
   timer: any;
-  arr: boolean[];
   brickWidth = 6;
+  counts: number;
 
   constructor(props: IProps) {
     super(props);
-    let { width, delay, rightToLeft } = props;
+
+    let { width } = props;
+    this.counts = Math.floor(width / (this.brickWidth * 2));
+  }
+
+  componentDidMount() {
+    let { delay, rightToLeft } = this.props;
     delay = delay || 100;
     rightToLeft = !!rightToLeft;
-    const counts = Math.floor(width / (this.brickWidth * 2));
-    this.arr = (new Array(counts)).fill(true);
 
     this.timer = setInterval(() => {
       let nextActive: number;
       if (rightToLeft) {
         nextActive = this.state.active - 1;
         if (nextActive < 0) {
-          nextActive = counts - 1;
+          nextActive = this.counts - 1;
         }
       } else {
         nextActive = this.state.active + 1;
-        if (nextActive >= counts) {
+        if (nextActive >= this.counts) {
           nextActive = 0;
         }
       }
@@ -51,7 +55,7 @@ export class Progress extends React.Component<IProps> {
     return (
       <div style={{ textAlign: 'left' }}>
         {
-          this.arr.map((t, index) =>
+          (new Array(this.counts)).fill(true).map((t, index) =>
             <div key={index} style={{ backgroundColor: this.state.active === index ? 'rgb(247, 147, 26)' : 'rgb(231, 213, 192)', display: 'inline-block', marginRight: this.brickWidth, width: this.brickWidth, height: 4 }}></div>
           )
         }

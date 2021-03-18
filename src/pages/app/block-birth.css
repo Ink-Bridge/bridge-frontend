@@ -1,8 +1,6 @@
-.block-info {
+.block-birth {
+  margin-top: 4rem;
   padding-right: 2.2rem;
-}
-.block-info:last-child {
-  padding-right: 0rem;
 }
 
 .block-number {

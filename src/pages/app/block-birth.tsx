@@ -18,19 +18,11 @@ export class BlockBirth extends React.Component<IProps, State> {
     width: 0,
   };
   timer: any;
-
-  constructor(props: IProps) {
-    super(props);
-
-    this.setState({
-      opacity: 0.2,
-      width: 0,
-    });
+  
+  componentDidMount() {
+    const opacityStep = (1 - 0.2) / (this.props.delay / 60);
+    const widthStep = (37 - 0) / (this.props.delay / 60);
     this.timer = setInterval(() => {
-      const opacityStep = (1 - 0.2) / (props.delay / 60);
-      const widthStep = (37 - 0) / (props.delay / 60);
-
-      console.log('state,', this)
       let newOpacity = this.state.opacity + opacityStep;
       let newWidth = this.state.width + widthStep;
 
@@ -47,7 +39,7 @@ export class BlockBirth extends React.Component<IProps, State> {
       if (newOpacity === 1 && newWidth === 37) {
         clearInterval(this.timer);
       }
-    }, 60);
+    }, 40);
   }
 
   componentWillUnmount() {
@@ -56,7 +48,7 @@ export class BlockBirth extends React.Component<IProps, State> {
 
   render = () => {
     return (
-      <div className="block-info">
+      <div className="block-birth">
         <div className="block" style={{ width: `${this.state.width}rem`, opacity: this.state.opacity }}>
           <Box color="white" textAlign="left" height="5rem" lineHeight="5rem" paddingLeft="2.2rem" bgcolor="#E5AA64" position="relative">
             <span>
@@ -73,7 +65,7 @@ export class BlockBirth extends React.Component<IProps, State> {
             </a>
           </Box>
           
-          <Box>
+          <Box overflow="hidden">
             <Box height="5rem" lineHeight="5rem" padding="0rem 2.2rem" display="flex" justifyContent="space-between">
               <span style={{ fontWeight: 600 }}>producer</span>
               <span>{ getFixedAddress(this.props.block.miner) }</span>

@@ -14,22 +14,22 @@ interface IProps {
     opacity: number;
   };
   checked?: boolean;
-  first?: boolean;
+  showProgress?: boolean;
 }
 
 export const BlockInfo: FC<IProps> = ({
   blockData,
   txs,
   checked = false,
-  first = false,
+  showProgress = true,
 }): ReactElement => {
 
   return (
     <div className="block-info">
       <Box height="4rem" bgcolor="rgb(239, 239, 239)" position="relative" left="-2.2rem">
         {
-          checked && !first &&
-            <Progress rightToLeft={true} width={292}></Progress>
+          checked && showProgress &&
+            <Progress width={292}></Progress>
         }
       </Box>
       <div className="block">

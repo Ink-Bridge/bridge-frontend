@@ -8,7 +8,6 @@ interface Props {
 }
 
 export const ApiProvider = React.memo(function Api({ children }: Props): React.ReactElement<Props> | null {
-  console.log('api');
   const [ isApiReady, setIsReady ] = useState<boolean>(false);
   const [ api, setApi ] = useState<ApiPromise>({} as ApiPromise);
   
@@ -19,7 +18,6 @@ export const ApiProvider = React.memo(function Api({ children }: Props): React.R
     });
 
     apiPromise.on('ready', _api => {
-      console.log('ready', _api);
       setApi(_api);
       setIsReady(true);
     });
