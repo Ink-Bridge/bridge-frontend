@@ -44,7 +44,7 @@ const Main: FC = (): ReactElement => {
     } else {
       right += 300;
     }
-    console.log('min', min, 'right', right);
+    // console.log('min', min, 'right', right);
     setRight(right);
   };
 
@@ -60,7 +60,7 @@ const Main: FC = (): ReactElement => {
     } else {
       right -= 300;
     }
-    console.log('min', min, 'right', right);
+    // console.log('min', min, 'right', right);
     setRight(right);
   };
 
@@ -70,7 +70,7 @@ const Main: FC = (): ReactElement => {
     }
     let min = container.current.clientWidth - content.current.clientWidth;
     min = min > 0 ? 0 : min;
-    console.log('goto right', min);
+    // console.log('goto right', min);
     setRight(0);
   };
 
@@ -82,6 +82,7 @@ const Main: FC = (): ReactElement => {
     // min ~ 0
     // rightmax  - leftmax
     let min = container.current.clientWidth - content.current.clientWidth;
+    console.log('min', min, 'right', right);
     if (min < 0 && right > min) {
       setPrevAvailable(true);
     } else {
@@ -93,7 +94,7 @@ const Main: FC = (): ReactElement => {
       setNextAvailable(false);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [right]);
+  }, [right, blockList]);
 
   useEffect(() => {
     if (!blockList || !blockList.length ) {
